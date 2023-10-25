@@ -25,23 +25,11 @@ public class BookingDtoIn implements Serializable {
         return numPeoples;
     }
 
-    public void setNumPeoples(Integer numPeoples) {
-        this.numPeoples = numPeoples;
-    }
-
     public LocalDate getDateArrival() {
         return dateArrival;
     }
 
-    public void setDateArrival(LocalDate dateArrival) {
-        this.dateArrival = dateArrival;
-    }
-
     public LocalDate getDateExit() {
         return dateExit;
-    }
-
-    public void setDateExit(LocalDate dateExit) {
-        this.dateExit = dateExit;
     }
 }

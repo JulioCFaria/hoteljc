@@ -9,7 +9,7 @@ import com.hoteljc.demo.util.BookingMapper;
 import com.hoteljc.demo.util.Validation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.BookingRepository;
+import com.hoteljc.demo.repository.BookingRepository;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package repository;
+package com.hoteljc.demo.repository;
 
 
 import com.hoteljc.demo.models.Booking;

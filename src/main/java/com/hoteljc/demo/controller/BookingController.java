@@ -11,7 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import repository.BookingRepository;
+import com.hoteljc.demo.repository.BookingRepository;
 
 import java.net.URI;
 import java.util.List;
@@ -46,16 +46,22 @@ public class BookingController {
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody BookingDtoIn bookingDtoIn) {
         try {
-            BookingDtoOut bookingDtoOut = bookingService.registerBooking(bookingDtoIn);
-            URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                    .path("/{id}")
-                    .buildAndExpand(bookingDtoOut.getId())
-                    .toUri();
-            return ResponseEntity.created(location).body(bookingDtoOut);
+            if (bookingDtoIn.getDateArrival() != null) {
+                BookingDtoOut bookingDtoOut = bookingService.registerBooking(bookingDtoIn);
+                URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                        .path("/{id}")
+                        .buildAndExpand(bookingDtoOut.getId())
+                        .toUri();
+                return ResponseEntity.created(location).body(bookingDtoOut);
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("A data de chegada é nula.");
+            }
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.getMessage());
         }
     }
+
+
 
     @PutMapping("/update/{id}")
     public ResponseEntity<BookingDtoOut> update(@RequestBody BookingDtoIn bookingDtoIn, @PathVariable Long id) {

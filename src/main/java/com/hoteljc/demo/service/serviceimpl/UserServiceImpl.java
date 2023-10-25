@@ -12,7 +12,7 @@ import com.hoteljc.demo.service.UserService;
 import com.hoteljc.demo.util.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.UserRepository;
+import com.hoteljc.demo.repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package repository;
+package com.hoteljc.demo.repository;
 import com.hoteljc.demo.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

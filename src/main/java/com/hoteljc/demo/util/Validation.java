@@ -4,8 +4,8 @@ import com.hoteljc.demo.dtos.UserDtoIn;
 import com.hoteljc.demo.models.Booking;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import repository.BookingRepository;
-import repository.UserRepository;
+import com.hoteljc.demo.repository.BookingRepository;
+import com.hoteljc.demo.repository.UserRepository;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -17,8 +17,6 @@ public class Validation {
     private BookingRepository bookingRepository;
     @Autowired
     private UserRepository userRepository;
-
-    private UserDtoIn userDtoIn;
 
     public void validateDateRange(LocalDate dateArrival, LocalDate dateExit) {
         if (dateArrival.isAfter(dateExit) || dateArrival.equals(dateExit)) {
