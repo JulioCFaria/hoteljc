@@ -10,7 +10,7 @@ import java.time.LocalDate;
 public class Booking implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "booking_id")
     Long id;
     @Column(name="num_peoples",nullable = false)
     Integer numPeoples;

@@ -36,9 +36,6 @@ public class UserServiceImpl implements UserService {
         }
         EnderecoDtoIn enderecoDtoIn = cepService.findCep(userDtoIn.getCep());
         User user = userMapper.convertToEntity(userDtoIn);
-        user.setName(userDtoIn.getName());
-        user.setCpf(userDtoIn.getCpf());
-        user.setEmail(userDtoIn.getEmail());
         user.setEndereco(fillEndereco(enderecoDtoIn));
         User savedUser = userRepository.save(user);
         return userMapper.convertToDtoOut(savedUser);
@@ -94,16 +91,6 @@ public class UserServiceImpl implements UserService {
     private User returnUser(Long id) {
         return userRepository.findById(id).orElseThrow(()
                 -> new ResourceNotFoundException("Usuario com ID " + id + " não encontrado."));
-    }
-    private User saveUser(UserDtoIn userDtoIn){
-
-        User newUser = new User();
-        newUser.setEmail(userDtoIn.getEmail());
-        newUser.setName(userDtoIn.getName());
-        newUser.setCpf(userDtoIn.getCpf());
-
-        User savedUser = userRepository.save(newUser);
-        return  savedUser;
     }
 
     private Endereco fillEndereco(EnderecoDtoIn enderecoDtoIn){

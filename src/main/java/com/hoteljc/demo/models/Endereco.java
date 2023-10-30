@@ -3,12 +3,14 @@ package com.hoteljc.demo.models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "endereco")
 public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id",nullable = false)
+    @Column(name = "endereco_id",nullable = false)
     private Long id;
     @Column(name="cep")
     private String cep;
@@ -20,11 +22,6 @@ public class Endereco {
     private String localidade;
     @Column(name="uf")
     private String uf;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="id_user")
-    private User user;
-
     public Endereco(String cep, String logradouro, String bairro, String localidade, String uf) {
         this.cep = cep;
         this.logradouro = logradouro;
