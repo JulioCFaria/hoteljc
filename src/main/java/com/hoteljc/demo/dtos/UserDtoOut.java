@@ -1,22 +1,22 @@
 package com.hoteljc.demo.dtos;
 
+import com.hoteljc.demo.models.Endereco;
 import com.hoteljc.demo.models.User;
 public class UserDtoOut {
     Long id;
     String name;
     String email;
     String cpf;
-    EnderecoDtoOut endereco;
-
-    public UserDtoOut(String name, String email,String cpf, EnderecoDtoOut endereco) {
-        this.name = name;
-        this.email = email;
-        this.cpf = cpf;
-        this.endereco = endereco;
-    }
+    Endereco endereco;
 
     public UserDtoOut(User user) {
+        this.id = user.getId();
+        this.name=user.getName();
+        this.cpf = user.getCpf();
+        this.email= user.getEmail();
+        this.endereco = user.getEndereco();
     }
+
 
     public Long getId() {
         return id;
@@ -50,11 +50,11 @@ public class UserDtoOut {
         this.cpf = cpf;
     }
 
-    public EnderecoDtoOut getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(EnderecoDtoOut endereco) {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
 }
